@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SocialMedia.DataAccess.Concrete
+namespace SocialMedia.DataAccess.Concrete.EfEntityFramwork
 {
-    public class SocialMediaDbContext: DbContext
+    public class SocialMediaDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
 
@@ -29,7 +29,7 @@ namespace SocialMedia.DataAccess.Concrete
         public DbSet<Friend> Friends { get; set; }
 
         public DbSet<Person> Person { get; set; }
-        
+
         public DbSet<UserTag> UserTags { get; set; }
 
         public DbSet<Notification> Notifications { get; set; }
@@ -97,7 +97,7 @@ namespace SocialMedia.DataAccess.Concrete
                 .HasForeignKey(pt => pt.TagId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-           
+
             //Comment
 
             modelBuilder.Entity<Comment>()
@@ -124,7 +124,7 @@ namespace SocialMedia.DataAccess.Concrete
             //Message
 
             modelBuilder.Entity<Message>()
-                .HasOne<User>(m => m.User)
+                .HasOne(m => m.User)
                 .WithOne(u => u.Message)
                 .HasForeignKey<Message>(m => m.UserId)
                 .OnDelete(DeleteBehavior.NoAction);

@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Login Page";
+}
+
+<div class="account">
+    <h2>Login into your account</h2>
+    <form action="" method="post">
+        <div class="form-input">
+            <i class="fa-regular fa-envelope"></i>
+            <input type="text" placeholder="Your Email Addresss" />
+        </div>
+        <div class="form-input">
+            <i class="fa-solid fa-lock"></i>
+            <input type="text" placeholder="Password" />
+        </div>
+
+        <button class="form-submit">Login</button>
+        <p>Don't have a account? <a asp-controller="Account" asp-action="Register"><span>Register</span></a></p>
+    </form>
+    <div class="others">
+        <p>Or, Sign in with your social account</p>
+        <button>
+            <div class="icon">
+                <i class="fa-brands fa-google"></i>
+            </div>
+            <div class="btn-txt">Sign in with Google</div>
+        </button>
+        <button>
+            <div class="icon">
+                <i class="fa-brands fa-facebook-f"></i>
+            </div>
+            <div class="btn-txt">Sign in with Facebook</div>
+        </button>
+    </div>
+</div>

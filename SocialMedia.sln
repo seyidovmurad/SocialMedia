@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.Entities", "SocialMedia.Entities\SocialMedia.Entities.csproj", "{ED9258F9-C960-42B0-8E64-4CC402138003}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMedia.Entities", "SocialMedia.Entities\SocialMedia.Entities.csproj", "{ED9258F9-C960-42B0-8E64-4CC402138003}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.Core", "SocialMedia.Core\SocialMedia.Core.csproj", "{FE066D04-43A2-4016-A552-8B588BD54DD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMedia.Core", "SocialMedia.Core\SocialMedia.Core.csproj", "{FE066D04-43A2-4016-A552-8B588BD54DD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.DataAccess", "SocialMedia.DataAccess\SocialMedia.DataAccess.csproj", "{8047C7B7-1C19-4F17-8287-AC6F18CE7311}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMedia.DataAccess", "SocialMedia.DataAccess\SocialMedia.DataAccess.csproj", "{8047C7B7-1C19-4F17-8287-AC6F18CE7311}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia.WebUI", "SocialMedia.WebUI\SocialMedia.WebUI.csproj", "{4A6D4038-8531-476C-A03F-87455507B910}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{8047C7B7-1C19-4F17-8287-AC6F18CE7311}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8047C7B7-1C19-4F17-8287-AC6F18CE7311}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8047C7B7-1C19-4F17-8287-AC6F18CE7311}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A6D4038-8531-476C-A03F-87455507B910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A6D4038-8531-476C-A03F-87455507B910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A6D4038-8531-476C-A03F-87455507B910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A6D4038-8531-476C-A03F-87455507B910}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

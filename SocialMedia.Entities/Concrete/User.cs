@@ -22,7 +22,7 @@ namespace SocialMedia.Entities.Concrete
 
         public int Gender { get; set; } //male-0 female-1 other-2
 
-        public int Status { get; set; } //active-0 deactive-1 pending-2 (pendig unverified email)
+        public int Status { get; set; } //active-0 deactive-2 pending-1 (pendig unverified email)
 
         public DateTime BirthDate { get; set; }
 

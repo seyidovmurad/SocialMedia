@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Register Page";
+}
+
+
+
+<div class="account">
+    <h2>Create your account</h2>
+    <form action="" method="post">
+        <div class="form-input">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" placeholder="Your Name" />
+        </div>
+        <div class="form-input">
+            <i class="fa-regular fa-envelope"></i>
+            <input type="text" placeholder="Your Email Addresss" />
+        </div>
+        <div class="form-input">
+            <i class="fa-solid fa-lock"></i>
+            <input type="text" placeholder="Password" />
+        </div>
+        <div class="form-input">
+            <i class="fa-solid fa-lock"></i>
+            <input type="text" placeholder="Confirm Password" />
+        </div>
+
+        <button class="form-submit">Register</button>
+        <p>Already have account? <a asp-controller="Account" asp-action="Login"><span>Login</span></a></p>
+    </form>
+</div>

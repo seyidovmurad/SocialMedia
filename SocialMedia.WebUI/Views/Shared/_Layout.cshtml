@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
+    <link rel="stylesheet" href="@ViewData["Style"]" asp-append-version="true" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="nav-icon">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Social.</span>
+            </a>
+            <div class="nav-items">
+                <form class="search">
+                    <div class="search-input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Start typing to search." />
+                    </div>
+                </form>
+                <div class="nav-btns">
+                    <a href="#" class="nav-btn-icon nav-btn-selected">
+                        <i class="fa-solid fa-house"></i>
+                    </a>
+                    <a href="#" class="nav-btn-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </a>
+                    <a href="#" class="nav-btn-icon">
+                        <i class="fa-solid fa-video"></i>
+                    </a>
+                    <a href="#" class="nav-btn-icon">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <a href="#" class="nav-btn-icon">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <div class="nav-action-icon p-relative">
+                    <div class="dot"></div>
+                    <i class="fa-regular fa-bell"></i>
+                </div>
+                <div class="nav-action-icon">
+                    <i class="fa-regular fa-comment"></i>
+                </div>
+                <div class="nav-action-icon">
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+                <div class="nav-action-icon">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="menu-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="menu-icon">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="p-relative">
+        <nav>
+            <div class="nav-container">
+                <div class="nav-box">
+                    <h5>New Feeds</h5>
+                    <div class="nav-box-items">
+                        <a href="#" class="box-item">
+                            <div class="box-icon b-circle bg-l-blue">
+                                <i class="fa-solid fa-tv"></i>
+                            </div>
+                            <p>Newsfeed</p>
+                        </a>
+                        <a href="#" class="box-item">
+                            <div class="box-icon b-circle bg-l-blue">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <p>Badges</p>
+                        </a>
+                        <a href="#" class="box-item">
+                            <div class="box-icon b-circle bg-l-blue">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <p>Globe</p>
+                        </a>
+                        <a href="#" class="box-item">
+                            <div class="box-icon b-circle bg-l-blue">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <p>Popular Groups</p>
+                        </a>
+                        <a href="#" class="box-item">
+                            <div class="box-icon b-circle bg-l-blue">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <p>Profile</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-box">
+                    <h5>More Pages</h5>
+                    <div class="nav-box-items">
+                        <a href="#" class="box-item">
+                            <div class="box-icon">
+                                <i class="fa-solid fa-inbox"></i>
+                            </div>
+                            <p>Email Box <span class="ntf-cnt">504</span></p>
+                        </a>
+                        <a href="#" class="box-item">
+                            <div class="box-icon">
+                                <i class="fa-solid fa-house"></i>
+                            </div>
+                            <p>Near Hotel</p>
+                        </a>
+                        <a href="#" class="box-item">
+                            <div class="box-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <p>Latest Event</p>
+                        </a>
+                        <a href="#" class="box-item">
+                            <div class="box-icon">
+                                <i class="fa-brands fa-youtube"></i>
+                            </div>
+                            <p>Live Streams</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-box">
+                    <h5>Account</h5>
+                    <div class="nav-box-items">
+                        <a href="#" class="box-item">
+                            <div class="box-icon c-gray">
+                                <i class="fa-solid fa-inbox"></i>
+                            </div>
+                            <p>Settings</p>
+                        </a>
+                        <a href="#" class="box-item">
+                            <div class="box-icon c-gray">
+                                <i class="fa-solid fa-house"></i>
+                            </div>
+                            <p>Analytics</p>
+                        </a>
+                        <a href="#" class="box-item">
+                            <div class="box-icon c-gray">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <p>Chat <span class="ntf-cnt">504</span></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+             @RenderBody()
+
+        </div>
+    </main>
+    <script src="https://kit.fontawesome.com/ec9224e721.js" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
