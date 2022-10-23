@@ -1,31 +1,52 @@
-﻿
+﻿@model RegisterViewModel
 @{
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
     ViewData["Title"] = "Register Page";
+    
 }
 
 
 
 <div class="account">
     <h2>Create your account</h2>
-    <form action="" method="post">
+    <form asp-action="Register" method="post">
+        <h3>@TempData["Error"]</h3>
         <div class="form-input">
             <i class="fa-solid fa-user"></i>
-            <input type="text" placeholder="Your Name" />
+            <input type="text" asp-for="Name" placeholder="Name" />
+            <span asp-validation-for="Name"></span>
         </div>
         <div class="form-input">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" asp-for="Surname" placeholder="Surname" />
+            <span asp-validation-for="Surname"></span>
+        </div>
+        <div class="form-input">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" asp-for="Username" placeholder="Username" />
+            <span asp-validation-for="Username"></span>
+        </div>
+        <div class="form-input">
+            <span asp-validation-for="Email"></span>
             <i class="fa-regular fa-envelope"></i>
-            <input type="text" placeholder="Your Email Addresss" />
+            <input type="email" asp-for="Email" placeholder="Email Addresss" />
         </div>
         <div class="form-input">
             <i class="fa-solid fa-lock"></i>
-            <input type="text" placeholder="Password" />
+            <input type="password" asp-for="Password" placeholder="Password" />
+            <span asp-validation-for="Password"></span>
         </div>
         <div class="form-input">
             <i class="fa-solid fa-lock"></i>
-            <input type="text" placeholder="Confirm Password" />
+            <input type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" />
+            <span asp-validation-for="ConfirmPassword"></span>
         </div>
-
+        <div class="form-input">
+            @Html.ValidationMessageFor(m => m.Gender)
+            Male @Html.RadioButtonFor(m => m.Gender, "Male")
+            Female @Html.RadioButtonFor(m => m.Gender, "Female")
+            Other @Html.RadioButtonFor(m => m.Gender, "Other")
+        </div>
         <button class="form-submit">Register</button>
         <p>Already have account? <a asp-controller="Account" asp-action="Login"><span>Login</span></a></p>
     </form>

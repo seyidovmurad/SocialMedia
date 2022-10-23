@@ -1,7 +1,19 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using SocialMedia.Business.Abstract;
+using SocialMedia.Business.Concrete;
+using SocialMedia.DataAccess.Abstract;
+using SocialMedia.DataAccess.Concrete.EfEntityFramwork;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie();
+
+
+builder.Services.AddScoped<IUserDal, UserDal>();
+builder.Services.AddScoped<IUserService, UserManager>();
 
 var app = builder.Build();
 
@@ -18,6 +30,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

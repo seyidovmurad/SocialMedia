@@ -1,4 +1,4 @@
-﻿
+﻿@model LoginViewModel
 @{
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
     ViewData["Title"] = "Login Page";
@@ -6,14 +6,17 @@
 
 <div class="account">
     <h2>Login into your account</h2>
-    <form action="" method="post">
+    <form asp-action="Login" method="post">
+        <h3>@TempData["Error"]</h3>
         <div class="form-input">
-            <i class="fa-regular fa-envelope"></i>
-            <input type="text" placeholder="Your Email Addresss" />
+            <i class="fa-solid fa-user"></i>
+            <input asp-for="Username" type="text" placeholder="Username" />
+            <span asp-validation-for="Username"></span>
         </div>
         <div class="form-input">
             <i class="fa-solid fa-lock"></i>
-            <input type="text" placeholder="Password" />
+            <input asp-for="Password" type="password" placeholder="Password" />
+            <span asp-validation-for="Password"></span>
         </div>
 
         <button class="form-submit">Login</button>
