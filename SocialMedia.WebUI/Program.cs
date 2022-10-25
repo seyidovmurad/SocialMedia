@@ -13,7 +13,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 
 builder.Services.AddScoped<IUserDal, UserDal>();
+builder.Services.AddScoped<IPostDal, PostDal>();
+builder.Services.AddScoped<ITagDal, TagDal>();
+builder.Services.AddScoped<IPostTagDal, PostTagDal>();
+
 builder.Services.AddScoped<IUserService, UserManager>();
+builder.Services.AddScoped<IPostService, PostManager>();
 
 var app = builder.Build();
 

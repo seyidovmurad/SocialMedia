@@ -102,7 +102,8 @@ namespace SocialMedia.DataAccess.Concrete.EfEntityFramwork
                 .HasOne(t => t.Tag)
                 .WithMany(pt => pt.PostTags)
                 .HasForeignKey(pt => pt.TagId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
+
 
 
             //Comment

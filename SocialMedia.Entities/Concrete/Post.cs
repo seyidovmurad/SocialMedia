@@ -8,17 +8,17 @@ namespace SocialMedia.Entities.Concrete
 
         public string Content { get; set; }
 
-        public string ContentPicOrVid { get; set; }
+        public string? ContentPicOrVid { get; set; }
 
-        public bool HasVideo { get; set; } = false;
+        public bool HasVideo { get; set; }
 
-        public bool HasImage { get; set; } = false;
+        public bool HasImage { get; set; }
 
         public DateTime Created { get; set; } = DateTime.Now;
 
         public DateTime? Updated { get; set; } = null;
 
-        public User User { get; set; }
+        public User? User { get; set; }
 
         public int UserId { get; set; }
 

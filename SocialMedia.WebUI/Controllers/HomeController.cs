@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace SocialMedia.WebUI.Controllers
 {
@@ -16,6 +17,14 @@ namespace SocialMedia.WebUI.Controllers
         [Authorize]
         public IActionResult Index()
         {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult CreatePost()
+        {
+            var a = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return View();
         }
 

@@ -85,7 +85,7 @@ namespace SocialMedia.WebUI.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim("username", foundUser.Username),
-                        new Claim(ClaimTypes.NameIdentifier, foundUser.Username),
+                        new Claim(ClaimTypes.NameIdentifier, foundUser.Id.ToString()),
                         new Claim(ClaimTypes.Name, foundUser.Name)
                     };
                     var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

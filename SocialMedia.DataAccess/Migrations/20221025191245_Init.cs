@@ -30,8 +30,8 @@ namespace SocialMedia.DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProfilePic = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CoverPic = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -113,7 +113,7 @@ namespace SocialMedia.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ContentPicOrVid = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ContentPicOrVid = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HasVideo = table.Column<bool>(type: "bit", nullable: false),
                     HasImage = table.Column<bool>(type: "bit", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -285,9 +285,10 @@ namespace SocialMedia.DataAccess.Migrations
                 name: "PostTags",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                               .Annotation("SqlServer:Identity", "1, 1"),
                     PostId = table.Column<int>(type: "int", nullable: false),
                     TagId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -391,6 +392,18 @@ namespace SocialMedia.DataAccess.Migrations
                 name: "IX_PostTags_TagId",
                 table: "PostTags",
                 column: "TagId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Username",
+                table: "Users",
+                column: "Username",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserTags_UserId",

@@ -1,7 +1,6 @@
 ﻿
 @{
     ViewData["Title"] = "Social";
-    ViewData["Style"] = "~/css/home.css";
 }
 
 <div class="home">
@@ -11,24 +10,28 @@
                 <div class="crt-top-icon">
                     <i class="fa-solid fa-pen"></i>
                 </div>
-                <h5>Create Post</h5>
+                <h5 id="postTitle">Create Post</h5>
             </div>
-            <div class="crt-post-cnt">
-                <textarea name="" placeholder="What's on your mind?"></textarea>
-            </div>
-            <div class="crt-bottom">
-                <div class="crt-post-actions">
-                    <div class="crt-actoin-item">
-                        <i class="fa-solid fa-video"></i>
-                        <span>Video</span>
-                    </div>
-                    <div class="crt-actoin-item">
-                        <i class="fa-solid fa-image"></i>
-                        <span>Photo</span>
-                    </div>
+            <form id="post" enctype="multipart/form-data">
+                <input type="file" style="display: none" name="Image" id="form-img" accept="image/png, image/gif, image/jpeg" />
+                <input type="file" style="display: none" name="Video" id="form-video" accept="video/mp4,video/x-m4v,video/*" />
+                <div class="crt-post-cnt">
+                    <textarea name="content" id="postContent" placeholder="What's on your mind?"></textarea>
                 </div>
-                <button>Post</button>
-            </div>
+                <div class="crt-bottom">
+                    <div class="crt-post-actions">
+                        <div class="crt-actoin-item" onclick="chooseFile(true)">
+                            <i class="fa-solid fa-video"></i>
+                            <span>Video</span>
+                        </div>
+                        <div class="crt-actoin-item" onclick="chooseFile()">
+                            <i class="fa-solid fa-image"></i>
+                            <span>Photo</span>
+                        </div>
+                    </div>
+                    <button type="submit" id="postBtn" >Post</button>
+                </div>
+            </form>
         </article>
         <!-- POST START -->
         <article class="post">
@@ -115,3 +118,11 @@
         </div>
     </div>
 </div>
+
+
+@section Style {
+    <link rel="stylesheet" href=" ~/css/home.css" asp-append-version="true" />
+}
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/js/home.js")"></script>
+}

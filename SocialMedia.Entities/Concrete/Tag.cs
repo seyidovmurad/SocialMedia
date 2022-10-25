@@ -13,6 +13,6 @@ namespace SocialMedia.Entities.Concrete
 
         public string Name { get; set; }
 
-        public List<PostTag> PostTags { get; set; }
+        public List<PostTag>? PostTags { get; set; }
     }
 }

@@ -12,7 +12,7 @@ using SocialMedia.DataAccess.Concrete.EfEntityFramwork;
 namespace SocialMedia.DataAccess.Migrations
 {
     [DbContext(typeof(SocialMediaDbContext))]
-    [Migration("20221023035905_Init")]
+    [Migration("20221025191245_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -252,7 +252,6 @@ namespace SocialMedia.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ContentPicOrVid")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Created")
@@ -331,7 +330,7 @@ namespace SocialMedia.DataAccess.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
@@ -359,9 +358,15 @@ namespace SocialMedia.DataAccess.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("Username")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
