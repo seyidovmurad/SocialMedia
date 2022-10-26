@@ -52,5 +52,11 @@ namespace SocialMedia.Business.Concrete
             }
             
         }
+
+        public async Task<List<Post>> UserPostsByIdAsync(int userId)
+        {
+            var posts = await _postDal.GetUserAllPostsAsync(userId);
+            return posts;
+        }
     }
 }

@@ -1,0 +1,99 @@
+﻿article {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.author {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+}
+
+
+.author-cover {
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.cover-img {
+    padding-bottom: 20px;
+}
+
+    .cover-img > img {
+        width: 100%;
+        height: 25vh;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+
+.author-profile {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-img {
+    display: block;
+    width: 140px;
+    flex: 0 0 auto;
+    height: 50px;
+}
+
+    .profile-img > img {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        object-fit: cover;
+        position: absolute;
+        top: -60px;
+        left: 30px;
+    }
+
+.author-name {
+    width: 90%;
+    margin-left: 14px;
+}
+
+    .author-name > h3 {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    .author-name > span {
+        font-size: .9em;
+        font-weight: 300;
+    }
+
+.profile-actions {
+    font-size: 22px;
+}
+
+.author-nav {
+    padding-top: 25px;
+}
+
+    .author-nav > ul {
+        display: flex;
+        align-items: center;
+        font-size: 1em;
+        color: #333;
+        gap: 25px;
+    }
+
+
+
+@media only screen and (min-width: 768px) {
+    .posts {
+        padding: 0;
+    }
+
+    .cover-img > img {
+        height: 32vh;
+    }
+}

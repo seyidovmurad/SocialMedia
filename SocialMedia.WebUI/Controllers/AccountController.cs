@@ -80,13 +80,19 @@ namespace SocialMedia.WebUI.Controllers
                 
                 var user = new User { Username = model.Username, Password = model.Password };
                 var foundUser = await _userService.CheckUser(user);
+
+                var picUrl = foundUser.ProfilePic ?? (foundUser.Gender == (int)UserGender.Male ?
+                             "default_profile_male.jpg" : foundUser.Gender == (int)UserGender.Female ?
+                             "default_profile_female.jpg" : "default_profile.png");
+
                 if (foundUser is {})
                 {
                     var claims = new List<Claim>
                     {
                         new Claim("username", foundUser.Username),
+                        new Claim("profile-pic", picUrl),
                         new Claim(ClaimTypes.NameIdentifier, foundUser.Id.ToString()),
-                        new Claim(ClaimTypes.Name, foundUser.Name)
+                        new Claim(ClaimTypes.Name, $"{foundUser.Name} {foundUser.Surname}"),
                     };
                     var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var principal = new ClaimsPrincipal(claimIdentity);

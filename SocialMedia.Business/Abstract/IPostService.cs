@@ -10,5 +10,7 @@ namespace SocialMedia.Business.Abstract
     public interface IPostService
     {
         Task AddPostAsync(Post post);
+
+        Task<List<Post>> UserPostsByIdAsync(int userId);
     }
 }

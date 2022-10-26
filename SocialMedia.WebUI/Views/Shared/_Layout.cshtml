@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor Accessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -23,19 +24,19 @@
                     </div>
                 </form>
                 <div class="nav-btns">
-                    <a href="#" class="nav-btn-icon nav-btn-selected">
+                    <a href="/" class="nav-btn-icon  @(Accessor.HttpContext?.Request.Path.Value == "/" ? "nav-btn-selected" : "" )">
                         <i class="fa-solid fa-house"></i>
                     </a>
-                    <a href="#" class="nav-btn-icon">
+                    <a href="#" class="nav-btn-icon @(Accessor.HttpContext?.Request.Path.Value == "/friend" ? "nav-btn-selected" : "" )">
                         <i class="fa-solid fa-bolt"></i>
                     </a>
-                    <a href="#" class="nav-btn-icon">
+                    <a href="#" class="nav-btn-icon @(Accessor.HttpContext?.Request.Path.Value == "/videos" ? "nav-btn-selected" : "" )">
                         <i class="fa-solid fa-video"></i>
                     </a>
-                    <a href="#" class="nav-btn-icon">
+                    <a href="/account" class="nav-btn-icon @(Accessor.HttpContext?.Request.Path.Value == "/account" ? "nav-btn-selected" : "" )">
                         <i class="fa-regular fa-user"></i>
                     </a>
-                    <a href="#" class="nav-btn-icon">
+                    <a href="#" class="nav-btn-icon @(Accessor.HttpContext?.Request.Path.Value == "/shop" ? "nav-btn-selected" : "" )">
                         <i class="fa-solid fa-bag-shopping"></i>
                     </a>
                 </div>
@@ -51,10 +52,12 @@
                 <div class="nav-action-icon">
                     <i class="fa-solid fa-gear"></i>
                 </div>
-                <div class="nav-action-icon">
-                    <a href="/account/logout">
-                        <i class="fa-regular fa-user"></i>
-                    </a>
+                <div class="nav-action-icon nav-dropdown">
+                    <img src="~/media/@User.FindFirst("profile-pic").Value"/>
+                    <div class="options">
+                        <span>Settings</span>
+                        <a asp-action="Logout" asp-controller="Account">Logout</a>
+                    </div>
                 </div>
             </div>
             <div class="menu">
@@ -73,7 +76,7 @@
                 <div class="nav-box">
                     <h5>New Feeds</h5>
                     <div class="nav-box-items">
-                        <a href="#" class="box-item">
+                        <a href="/" class="box-item">
                             <div class="box-icon b-circle bg-l-blue">
                                 <i class="fa-solid fa-tv"></i>
                             </div>
@@ -97,7 +100,7 @@
                             </div>
                             <p>Popular Groups</p>
                         </a>
-                        <a href="#" class="box-item">
+                        <a href="/account" class="box-item">
                             <div class="box-icon b-circle bg-l-blue">
                                 <i class="fa-regular fa-user"></i>
                             </div>

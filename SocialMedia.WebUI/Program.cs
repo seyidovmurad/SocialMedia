@@ -8,8 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie();
+    .AddCookie(options =>
+    {
+        options.ExpireTimeSpan = TimeSpan.FromDays(1);
+    });
 
 
 builder.Services.AddScoped<IUserDal, UserDal>();
@@ -20,6 +24,9 @@ builder.Services.AddScoped<IPostTagDal, PostTagDal>();
 builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<IPostService, PostManager>();
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

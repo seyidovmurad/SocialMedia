@@ -14,14 +14,17 @@ document.getElementById("post").addEventListener("submit", function (e) {
             Accept: 'application/json',
             'Content-Type': 'multipart/form-data'
         }
-    })
-        .then(res => {
+        }).then(res => {
             btn.disabled = false;
             document.getElementById("postContent").value = "";
         }).catch(r => {
             btn.disabled = false;
             document.getElementById("postTitle").innerText = "Something went wrong try again";
+        }).finally(() => {
+            console.log("reload")
+            location.reload();
         })
+    location.reload();
 })
 
 
