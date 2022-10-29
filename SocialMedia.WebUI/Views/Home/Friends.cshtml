@@ -1,0 +1,35 @@
+﻿@model IEnumerable<UserViewModel>
+
+
+<div class="friend-page">
+    <div class="friend-nav">
+        <h2>Friends</h2>
+        <div class="friend-search">
+            <input type="text" placeholder="Search friend" />
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <!-- <div class="filter"></div> -->
+        </div>
+    </div>
+    <div class="friends">
+        @foreach (var friend in Model)
+        {
+            <div class="friend">
+                <img src="~/media/@friend.ProfilePic" alt=" " />
+                <div class="friend-name">
+                    <h4>@friend.FullName</h4>
+                    <span>@@@friend.Username</span>
+                    @*<span>12 mutual friends</span>*@
+                </div>
+                <div class="friend-actions">
+                    <a asp-action="SeeProfile" asp-controller="Friend" asp-route-reciverId="@friend.Id">See Profile</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+@section Style {
+    <link rel="stylesheet" href=" ~/css/friend.css" asp-append-version="true" />
+}

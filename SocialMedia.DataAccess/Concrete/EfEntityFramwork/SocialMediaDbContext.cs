@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using SocialMedia.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -178,5 +179,7 @@ namespace SocialMedia.DataAccess.Concrete.EfEntityFramwork
         {
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SocialMedia;Integrated Security=True;");
         }
+
+        
     }
 }

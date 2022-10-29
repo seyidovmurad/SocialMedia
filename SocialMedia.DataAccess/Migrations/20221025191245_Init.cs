@@ -324,8 +324,7 @@ namespace SocialMedia.DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_UserId",
                 table: "Comments",
-                column: "UserId",
-                unique: true);
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Friends_UserId",
@@ -335,8 +334,7 @@ namespace SocialMedia.DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Likes_LikedById",
                 table: "Likes",
-                column: "LikedById",
-                unique: true);
+                column: "LikedById");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Likes_PostId",
@@ -351,8 +349,7 @@ namespace SocialMedia.DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Messages_UserId",
                 table: "Messages",
-                column: "UserId",
-                unique: true);
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Notifications_UserId",
@@ -362,26 +359,22 @@ namespace SocialMedia.DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Participant_ChatId",
                 table: "Participant",
-                column: "ChatId",
-                unique: true);
+                column: "ChatId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Participant_UserId",
                 table: "Participant",
-                column: "UserId",
-                unique: true);
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Person_FriendId",
                 table: "Person",
-                column: "FriendId",
-                unique: true);
+                column: "FriendId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Person_UserId",
                 table: "Person",
-                column: "UserId",
-                unique: true);
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_UserId",
@@ -396,20 +389,17 @@ namespace SocialMedia.DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",
                 table: "Users",
-                column: "Email",
-                unique: true);
+                column: "Email");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Username",
                 table: "Users",
-                column: "Username",
-                unique: true);
+                column: "Username");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserTags_UserId",
                 table: "UserTags",
-                column: "UserId",
-                unique: true);
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

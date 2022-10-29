@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.DataAccess.Abstract
 {
-    public interface IUserDal: IEntityRepository<User>
+    public interface IPersonDal: IEntityRepository<Person>
     {
-        Task<List<User>> GetFriendsAsync(int id);
-
-        Task<List<User>> GetFriendRequestsAsync(int id);
+        Task<Friend> GetFriendIdAsync(int senderId, int reciverId);
     }
 }

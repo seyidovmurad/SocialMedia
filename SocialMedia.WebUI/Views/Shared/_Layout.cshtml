@@ -27,7 +27,7 @@
                     <a href="/" class="nav-btn-icon  @(Accessor.HttpContext?.Request.Path.Value == "/" ? "nav-btn-selected" : "" )">
                         <i class="fa-solid fa-house"></i>
                     </a>
-                    <a href="#" class="nav-btn-icon @(Accessor.HttpContext?.Request.Path.Value == "/friend" ? "nav-btn-selected" : "" )">
+                    <a href="/friends" class="nav-btn-icon @(Accessor.HttpContext?.Request.Path.Value == "/friends" ? "nav-btn-selected" : "" )">
                         <i class="fa-solid fa-bolt"></i>
                     </a>
                     <a href="#" class="nav-btn-icon @(Accessor.HttpContext?.Request.Path.Value == "/videos" ? "nav-btn-selected" : "" )">
@@ -82,11 +82,11 @@
                             </div>
                             <p>Newsfeed</p>
                         </a>
-                        <a href="#" class="box-item">
+                        <a href="friend-request" class="box-item">
                             <div class="box-icon b-circle bg-l-blue">
                                 <i class="fa-solid fa-award"></i>
                             </div>
-                            <p>Badges</p>
+                            <p>Friend Requests</p>
                         </a>
                         <a href="#" class="box-item">
                             <div class="box-icon b-circle bg-l-blue">
@@ -94,11 +94,11 @@
                             </div>
                             <p>Globe</p>
                         </a>
-                        <a href="#" class="box-item">
+                        <a href="/friends" class="box-item">
                             <div class="box-icon b-circle bg-l-blue">
                                 <i class="fa-solid fa-bolt"></i>
                             </div>
-                            <p>Popular Groups</p>
+                            <p>Friends</p>
                         </a>
                         <a href="/account" class="box-item">
                             <div class="box-icon b-circle bg-l-blue">

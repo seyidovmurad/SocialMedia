@@ -5,6 +5,7 @@ using SocialMedia.Business.Abstract;
 using SocialMedia.Entities.Abstract;
 using SocialMedia.Entities.Concrete;
 using SocialMedia.WebUI.Models;
+using SocialMedia.WebUI.Services;
 using System.Diagnostics;
 using System.Security.Claims;
 
@@ -15,9 +16,12 @@ namespace SocialMedia.WebUI.Controllers
     {
         private readonly IPostService _postService;
 
-        public HomeController(IPostService postService)
+        private readonly IFriendService _friendService;
+
+        public HomeController(IPostService postService, IFriendService friendService)
         {
             _postService = postService;
+            _friendService = friendService;
         }
 
         public IActionResult Index()
@@ -37,9 +41,7 @@ namespace SocialMedia.WebUI.Controllers
 
             foreach (var post in posts)
             {
-                var profilePic = post.User.ProfilePic ?? (post.User.Gender == (int)UserGender.Male ?
-                             "default_profile_male.jpg" : post.User.Gender == (int)UserGender.Female ?
-                             "default_profile_female.jpg" : "default_profile.png");
+                var profilePic = UserDefaultPicture.GetProfilePic(post.User.ProfilePic, (UserGender)post.User.Gender);
                 postModel.Add(new PostViewModel
                 {
                     Id = post.Id,
@@ -57,6 +59,49 @@ namespace SocialMedia.WebUI.Controllers
 
             var model = new UserPostsViewModel { Posts = postModel };
             return View(model);
+        }
+
+        [HttpGet("friends")]
+        public async Task<IActionResult> Friends()
+        {
+            var userId = int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var users = await _friendService.GetFriendsAsync(userId);
+
+            var userModel = new List<UserViewModel>();
+
+            users.ForEach(user =>
+            {
+                userModel.Add(new UserViewModel
+                {
+                    Id = user.Id,
+                    FullName = $"{user.Name} {user.Surname}",
+                    Username = user.Username,
+                    ProfilePic = UserDefaultPicture.GetProfilePic(user.ProfilePic, (UserGender)user.Gender)
+                });
+            });
+            return View(userModel);
+        }
+
+        [HttpGet("friend-request")]
+        public async Task<IActionResult> FriendRequest()
+        {
+            int userId = int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var users = await _friendService.GetFriendRequestAsync(userId);
+
+            var userModel = new List<UserViewModel>();
+
+            users.ForEach(user =>
+            {
+                userModel.Add(new UserViewModel
+                {
+                    Id = user.Id,
+                    FullName = $"{user.Name} {user.Surname}",
+                    Username = user.Username,
+                    ProfilePic = UserDefaultPicture.GetProfilePic(user.ProfilePic, (UserGender)user.Gender)
+                });
+            });
+            return View(userModel);
+
         }
 
     }

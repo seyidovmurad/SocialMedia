@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using SocialMedia.Business.Abstract;
 using SocialMedia.Entities.Abstract;
 using SocialMedia.Entities.Concrete;
 using SocialMedia.WebUI.Models;
+using SocialMedia.WebUI.Services;
 using System.Security.Claims;
 
 namespace SocialMedia.WebUI.Controllers
@@ -80,13 +82,21 @@ namespace SocialMedia.WebUI.Controllers
                 
                 var user = new User { Username = model.Username, Password = model.Password };
                 var foundUser = await _userService.CheckUser(user);
-
-                var picUrl = foundUser.ProfilePic ?? (foundUser.Gender == (int)UserGender.Male ?
-                             "default_profile_male.jpg" : foundUser.Gender == (int)UserGender.Female ?
-                             "default_profile_female.jpg" : "default_profile.png");
+               
 
                 if (foundUser is {})
                 {
+                    var picUrl = UserDefaultPicture.GetProfilePic(foundUser.ProfilePic, (UserGender)foundUser.Gender);
+                    // check user email verified and banned
+                    //if(foundUser.Status == (int)UserStatus.Pending)
+                    //{
+                    //    TempData["Error"] = "Verify your email address";
+                    //    return View();
+                    //}
+                    //else if (foundUser.Status == (int)UserStatus.Deactive) {
+                    //    TempData["Error"] = "Your account has suspended";
+                    //    return View();
+                    //}
                     var claims = new List<Claim>
                     {
                         new Claim("username", foundUser.Username),
