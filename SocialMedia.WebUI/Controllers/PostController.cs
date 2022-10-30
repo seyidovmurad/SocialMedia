@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SocialMedia.Business.Abstract;
 using SocialMedia.Entities.Concrete;
 using SocialMedia.WebUI.Models;
+using SocialMedia.WebUI.Services;
 using System.Security.Claims;
 
 namespace SocialMedia.WebUI.Controllers
@@ -26,7 +27,7 @@ namespace SocialMedia.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                string uniqueFileName = UploadedFile(model);
+                string uniqueFileName = await UploadedFile(model);
                 var post = new Post
                 {
                     Content = model.Content,
@@ -43,25 +44,17 @@ namespace SocialMedia.WebUI.Controllers
         }
 
 
-        private string UploadedFile(NewPostViewModel model)
+        private async Task<string> UploadedFile(NewPostViewModel model)
         {
-            string uniqueFileName = null;
+            string uniqueFileName = String.Empty;
 
             if (model.Image != null)
             {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using var fileStream = new FileStream(filePath, FileMode.Create);
-                model.Image.CopyTo(fileStream);
+                uniqueFileName = await UploadFileSerivce.UploadImageAsync(model.Image, webHostEnvironment, "images");
             }
             else if (model.Video != null)
             {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "videos");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Video.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using var fileStream = new FileStream(filePath, FileMode.Create);
-                model.Video.CopyTo(fileStream);
+                uniqueFileName = await UploadFileSerivce.UploadImageAsync(model.Video, webHostEnvironment, "videos");
             }
             return uniqueFileName;
         }

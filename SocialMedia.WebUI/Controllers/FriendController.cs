@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SocialMedia.Business.Abstract;
+using SocialMedia.Entities.Abstract;
+using SocialMedia.WebUI.Models;
+using SocialMedia.WebUI.Services;
 using System.Security.Claims;
 
 namespace SocialMedia.WebUI.Controllers
@@ -9,10 +12,11 @@ namespace SocialMedia.WebUI.Controllers
     public class FriendController : Controller
     {
         private readonly IFriendService _friendService;
-
-        public FriendController(IFriendService friendService)
+        private readonly IUserService _userService;
+        public FriendController(IFriendService friendService, IUserService userService)
         {
             _friendService = friendService;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -41,5 +45,6 @@ namespace SocialMedia.WebUI.Controllers
             return Redirect("/friend-request");
         }
 
+        
     }
 }

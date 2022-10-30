@@ -4,6 +4,7 @@ using SocialMedia.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -56,6 +57,24 @@ namespace SocialMedia.Business.Concrete
                     return null;
             }
             return found;
+        }
+
+        public async Task<User> GetUserById(int id)
+        {
+            var user = await _userDal.Get(u => u.Id == id);
+            return user;
+        }
+
+        public async Task Update(User user)
+        {
+            await _userDal.Update(user);
+        }
+
+        public async Task<List<User>> SearchUsersNotFriendAsync(string search)
+        {
+            search = search.ToLower();
+            var users = await _userDal.GetList(u => (u.Username.ToLower().Contains(search) || u.Name.Contains(search)));
+            return users;
         }
     }
 }

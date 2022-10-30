@@ -1,0 +1,70 @@
+﻿.settings {
+    padding: 40px;
+    background: #fff;
+    border-radius: 5px;
+    width: 100%;
+    margin: 20px 40px;
+}
+
+.setting-title {
+    font-size: 1.4em;
+    color: #444;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1em;
+    color: #333;
+    width: 100%;
+}
+
+.settings-item {
+    margin-bottom: 40px;
+}
+
+a {
+    all: unset
+}
+
+.settings-box {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 5px;
+}
+
+    .settings-box > i {
+        color: #888;
+    }
+
+.settings-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 47px;
+    height: 40px;
+    font-size: 1.1em;
+    color: var(--theme-color);
+    background: var(--theme-background-color);
+    margin-right: 14px;
+}
+
+@media only screen and (min-width: 900px) {
+    .settings {
+        margin: 20px 90px;
+    }
+
+    .setting-title {
+        font-size: 1.7em;
+    }
+}

@@ -1,17 +1,17 @@
-﻿@model IEnumerable<UserViewModel>
+﻿@model FriendRequestPageViewModel
 
 
 <div class="friend-page">
     <div class="friend-nav">
         <h2>Friend Requests</h2>
-        <div class="friend-search">
-            <input type="text" placeholder="Search friend" />
+        <form asp-action="SearchFriendRequest" asp-controller="Home" id="fSearchForm" class="friend-search">
+            <input name="search" type="text" placeholder="Search friend" id="friendSearch" onkeypress="return onSearch(event);" />
             <i class="fa-solid fa-magnifying-glass"></i>
             <!-- <div class="filter"></div> -->
-        </div>
+        </form>
     </div>
     <div class="friends">
-        @foreach(var friend in Model) {
+        @foreach(var friend in Model.RequestUsers) {
             <div class="friend">
                 <img src="~/media/@friend.ProfilePic" alt=" " />
                 <div class="friend-name">
@@ -21,15 +21,42 @@
                 </div>
                 <div class="friend-actions">
                     <a asp-action="AcceptRequest" asp-controller="Friend" asp-route-senderId="@friend.Id">Accept</a>
-                    <a asp-action="RejectProfile" asp-controller="Friend" asp-route-senderId="@friend.Id" >Rejecte</a>
+                    <a asp-action="RejectProfile" asp-controller="Friend" asp-route-senderId="@friend.Id" >Reject</a>
                 </div>
             </div>
         }
     </div>
+    @if(Model.RecommendUsers.Count > 0) {
+        <div class="friend-nav">
+            <h2>Result</h2>>
+        </div>
+        <div class="friends">
+            @foreach (var friend in Model.RecommendUsers)
+            {
+                <div class="friend">
+                    <img src="~/media/@friend.ProfilePic" alt=" " />
+                    <div class="friend-name">
+                        <h4>@friend.FullName</h4>
+                        <span>@@@friend.Username</span>
+                        @*<span>12 mutual friends</span>*@
+                    </div>
+                    <div class="friend-actions">
+                        <a asp-action="SendRequest" asp-controller="Friend" asp-route-reciverId="@friend.Id">Send Request</a>
+                        <a asp-action="SeeProfile" asp-controller="Friend" asp-route-userId="@friend.Id">See Profile</a>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    
 </div>
 
 
 
 @section Style {
     <link rel="stylesheet" href=" ~/css/friend.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/js/searchSubmit.js")"></script>
 }

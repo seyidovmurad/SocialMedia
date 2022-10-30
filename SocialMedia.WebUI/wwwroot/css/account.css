@@ -1,0 +1,115 @@
+﻿
+.account-detail {
+    background: #fff;
+    width: 100%;
+    margin: 20px 40px;
+}
+
+
+.detail-head {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    font-size: 1.2em;
+    font-weight: 300;
+    color: #fff;
+    background: var(--theme-color);
+}
+    .detail-head>a{
+        cursor: pointer;
+    }
+
+    h2 {
+        font-weight: 500;
+        margin-left: 20px;
+    }
+
+.detail-body {
+    padding: 20px;
+}
+
+.account-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+}
+
+    .account-picture > input {
+        display: none;
+    }
+
+    .account-picture > span, .account-picture>a {
+        cursor: pointer;
+        color: var(--theme-color);
+        text-decoration: underline;
+        font-size: 0.9em;
+        padding-top: 10px;
+    }
+
+    .account-picture > img {
+        width: 90px;
+        height: 90px;
+        border-radius: 7px;
+        object-fit: cover;
+    }
+
+
+.detail-input-two {
+    display: flex;
+}
+
+.detail-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+}
+
+    .detail-input > input, textarea {
+        outline: none;
+        border: 1px solid #888;
+        padding: 7px;
+        border-radius: 5px;
+        resize: none;
+    }
+
+        .detail-input > input:focus, textarea:focus {
+            border: 2px solid var(--theme-color)!important;
+        }
+
+    .detail-input > label {
+        font-size: 0.9em;
+        color: #666;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+.error-input {
+    border: 1px solid red !important;
+}
+
+.error {
+    color: red;
+    font-size: 0.7em;
+    margin-top: 3px;
+}
+
+.detail-submit {
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    background: var(--theme-color);
+    padding: 10px 25px;
+    font-size: 1em;
+    font-weight: 500;
+    margin: 10px;
+}
+
+
+@media only screen and (min-width: 900px) {
+    .account-detail {
+        margin: 20px 90px;
+    }
+}

@@ -53,6 +53,12 @@ namespace SocialMedia.Business.Concrete
             
         }
 
+        public async Task<List<Post>> GetFriendsPost(int userId, int skip, int take = -1)
+        {
+            var posts = await _postDal.GetUserFriendsPostsAsync(userId, skip, take);
+            return posts;
+        }
+
         public async Task<List<Post>> UserPostsByIdAsync(int userId)
         {
             var posts = await _postDal.GetUserAllPostsAsync(userId);

@@ -1,0 +1,85 @@
+﻿@model AccountDetailViewModel
+
+@{
+    ViewData["Title"] = "Account Setting";
+}
+
+<div class="account-detail">
+    <div class="detail-head">
+        <a href="/setting"><i class="fa-solid fa-arrow-left"></i></a>
+        <h2>Account Details</h2>
+    </div>
+    <div class="detail-body">
+        <form asp-action="AccountSetting" method="post" enctype="multipart/form-data">
+            <div class="account-picture">
+                <input type="hidden" asp-for="ProfilePic" />
+                <input type="hidden" asp-for="Id" />
+                <img id="acc-pic" src="~/media/@Model.ProfilePic" alt="" />
+                <span onclick="chooseFile('acc-file')">Change Picture</span>
+                <a asp-action="DeletePicture" asp-controller="Setting" style="color: red;">Delete Picture</a>
+                <input id="acc-file" type="file" asp-for="ImageFile" onchange="onFileChooseChangeImage(this, 'acc-pic')" />
+            </div>
+            <div class="detail-input-two">
+                <div class="detail-input">
+                    <label>First Name</label>
+                    <input asp-for="Name" type="text" />
+                    <span asp-validation-for="Name" class="error"></span>
+                </div>
+                <div class="detail-input">
+                    <label>Last Name</label>
+                    <input asp-for="Surname" type="text"  />
+                    <span asp-validation-for="Surname" class="error"></span>
+                </div>
+            </div>
+            <div class="detail-input-two">
+                <div class="detail-input">
+                    <label>Email</label>
+                    <input asp-for="Email" type="text" />
+                    <span asp-validation-for="Email" class="error"></span>
+                </div>
+                @*<div class="detail-input">
+                    <label>Phone Number</label>
+                    <input asp-for="Phone" type="text"  />
+                    <span asp-validation-for="Phone" class="error"></span>
+                </div>*@
+            </div>
+           @* <div class="detail-input">
+                <label>Country</label>
+                <input asp-for="Country" type="text" />
+                <span asp-validation-for="Country" class="error"></span>
+            </div>
+            <div class="detail-input">
+                <label>Address</label>
+                <input asp-for="Address" type="text"  />
+                <span asp-validation-for="Address" class="error"></span>
+            </div>
+            <div class="detail-input-two">
+                <div class="detail-input">
+                    <label>Town\City</label>
+                    <input asp-for="Town" type="text"  />
+                    <span asp-validation-for="Town" class="error"></span>
+                </div>
+                <div class="detail-input">
+                    <label>Postal Code</label>
+                    <input asp-for="PostalCode" type="text"  />
+                    <span asp-validation-for="PostalCode" class="error"></span>
+                </div>
+            </div>
+            <div class="detail-input">
+                <label>Description</label>
+                <textarea asp-for="Description"  cols="30" rows="10"></textarea>
+                <span asp-validation-for="Description" class="error"></span>
+            </div>*@
+            <input type="submit" value="Save" class="detail-submit">
+        </form>
+    </div>
+</div>
+
+
+@section Style {
+    <link rel="stylesheet" href=" ~/css/account.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/js/loadFile.js")"></script>
+}

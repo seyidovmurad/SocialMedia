@@ -13,11 +13,11 @@ namespace SocialMedia.WebUI.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly IUserService _userManager;
 
         public AccountController(IUserService userService)
         {
-            _userService = userService;
+            _userManager = userService;
         }
 
         public IActionResult Register()
@@ -30,14 +30,14 @@ namespace SocialMedia.WebUI.Controllers
         {
             if(ModelState.IsValid)
             {
-                var usernameExist = await _userService.IsUsernameExist(model.Username);
+                var usernameExist = await _userManager.IsUsernameExist(model.Username);
                 if(usernameExist)
                 {
                     ModelState.AddModelError("Username", "Username already exist.");
                     return View(model);
                 }
 
-                var emailExist = await _userService.IsEmailExist(model.Email);
+                var emailExist = await _userManager.IsEmailExist(model.Email);
                 if(emailExist)
                 {
                     ModelState.AddModelError("Email", "Email already exist.");
@@ -56,7 +56,7 @@ namespace SocialMedia.WebUI.Controllers
 
                 try
                 {
-                    await _userService.Add(user);
+                    await _userManager.Add(user);
                     return RedirectToAction("Login");
                 }
                 catch
@@ -81,7 +81,7 @@ namespace SocialMedia.WebUI.Controllers
             {
                 
                 var user = new User { Username = model.Username, Password = model.Password };
-                var foundUser = await _userService.CheckUser(user);
+                var foundUser = await _userManager.CheckUser(user);
                
 
                 if (foundUser is {})

@@ -12,5 +12,7 @@ namespace SocialMedia.Business.Abstract
         Task AddPostAsync(Post post);
 
         Task<List<Post>> UserPostsByIdAsync(int userId);
+
+        Task<List<Post>> GetFriendsPost(int userId, int skip, int take = -1);
     }
 }

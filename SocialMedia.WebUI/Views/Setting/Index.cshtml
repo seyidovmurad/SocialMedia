@@ -1,0 +1,66 @@
+﻿
+
+<div class="settings">
+    <div class="setting-title">
+        <h2>Settings</h2>
+    </div>
+    <div class="settings-items">
+        <div class="settings-item">
+            <h4>General</h4>
+            <a asp-action="AccountSetting" class="settings-box">
+                <div class="settings-icon">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+                <h3>Account Information</h3>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+            <a href="#" class="settings-box">
+                <div class="settings-icon">
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+                <h3>Social Accounts</h3>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+        </div>
+        <div class="settings-item">
+            <h4>Account</h4>
+            <a href="#" class="settings-box">
+                <div class="settings-icon">
+                    <i class="fa-regular fa-credit-card"></i>
+                </div>
+                <h3>My Cards</h3>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+            <a href="#" class="settings-box">
+                <div class="settings-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3>Change Password</h3>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+        </div>
+        <div class="settings-item">
+            <h4>Other</h4>
+            <a href="#" class="settings-box">
+                <div class="settings-icon">
+                    <i class="fa-regular fa-bell"></i>
+                </div>
+                <h3>Notification</h3>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+            <a asp-action="Logout" asp-controller="Account" class="settings-box">
+                <div class="settings-icon">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </div>
+                <h3>Logout</h3>
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+@section Style {
+    <link rel="stylesheet" href=" ~/css/setting.css" asp-append-version="true" />
+}
+

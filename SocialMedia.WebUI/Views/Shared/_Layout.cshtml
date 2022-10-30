@@ -12,7 +12,7 @@
 <body>
     <header>
         <nav>
-            <a href="#" class="nav-icon">
+            <a href="/" class="nav-icon">
                 <i class="fa-solid fa-bolt"></i>
                 <span>Social.</span>
             </a>
@@ -55,7 +55,7 @@
                 <div class="nav-action-icon nav-dropdown">
                     <img src="~/media/@User.FindFirst("profile-pic").Value"/>
                     <div class="options">
-                        <span>Settings</span>
+                        <a asp-action="AccountSetting" asp-controller="Setting">Settings</a>
                         <a asp-action="Logout" asp-controller="Account">Logout</a>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                             </div>
                             <p>Newsfeed</p>
                         </a>
-                        <a href="friend-request" class="box-item">
+                        <a href="/friend-request" class="box-item">
                             <div class="box-icon b-circle bg-l-blue">
                                 <i class="fa-solid fa-award"></i>
                             </div>
@@ -140,7 +140,7 @@
                 <div class="nav-box">
                     <h5>Account</h5>
                     <div class="nav-box-items">
-                        <a href="#" class="box-item">
+                        <a href="/setting" class="box-item">
                             <div class="box-icon c-gray">
                                 <i class="fa-solid fa-inbox"></i>
                             </div>
