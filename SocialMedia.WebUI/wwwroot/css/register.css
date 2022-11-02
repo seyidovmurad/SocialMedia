@@ -58,10 +58,13 @@ form {
     padding: 15px 20px;
     border-radius: 10px;
     color: #666;
+    display: flex;
+    align-items: center;
 }
 
     .form-input > input {
         color: #333;
+        width: 100%;
         background: transparent;
         border: none;
         outline: none;
